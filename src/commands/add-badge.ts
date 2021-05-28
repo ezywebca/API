@@ -13,12 +13,12 @@ export default class AddBadgeCommand implements Command {
         const botId = getIDFromMention(userMention);
         const exists = await this.bots.exists(botId);
         if (!exists)
-          throw new TypeError('Bot does not exist.');
+          throw new TypeError('We are sorry but this bot does not exist inside our system.....Maybe try a bot that is?');
 
         const savedBot = await this.bots.get(botId);
         savedBot.badges.push(badgeName.toUpperCase() as any);
         savedBot.save();
 
-        return ctx.channel.send(`✔ Bot now has \`${savedBot.badges.length}\` badges`);
+        return ctx.channel.send(`✔ Great this bot now has \`${savedBot.badges.length}\` badges`);
     }
 }
