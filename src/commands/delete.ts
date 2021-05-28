@@ -18,7 +18,7 @@ export default class DeleteCommand implements Command {
         const botId = getIDFromMention(botUserMention);
         const exists = await SavedBot.exists({ _id: botId });
         if (!exists)
-            throw new TypeError('Bot not found.');
+            throw new TypeError('We are sorry but this bot does not exist inside our system.....Maybe try a bot that is?');
         
         const savedBot = await this.bots.get(botId);        
         await savedBot.remove();
@@ -26,6 +26,6 @@ export default class DeleteCommand implements Command {
         const message = reason?.join(' ') || 'No reason specified.';
         await this.channelLog.deleted(botId, ctx.member.id, message);
 
-        return ctx.channel.send(`✅ Success`);
+        return ctx.channel.send(`✅ Success this bot was removed from this discord server + the site!`);
     }
 }
