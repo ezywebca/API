@@ -4,6 +4,7 @@ import { Command, CommandContext, Permission } from './command';
 
 
 export default class QCommand implements Command {
+  aliases = ['queue', 'upnext', 'list', 'bql']
   name = 'q';
   precondition: Permission = 'KICK_MEMBERS';
   
@@ -19,6 +20,6 @@ export default class QCommand implements Command {
       .map((b, i) => `[${i + 1}] ${action(b)}`)
       .join('\n');
 
-    return ctx.channel.send(details || '👀 Queue is currently empty...');
+    return ctx.channel.send(details || 'I 👀 and the queue is currently empty...Maybe try to get more people to add bots to the list for the time being or think of ways to improve this list?');
   }
 }
